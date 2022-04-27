@@ -1,5 +1,5 @@
 
-# DocumentCloud Add-On Example
+# Redact Bottom Inch
 
 This repository contains the Redact Bottom Inch add-on for DocumentCloud. 
 
