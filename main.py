@@ -6,36 +6,31 @@ DocumentCloud add-on system and run using Github Actions.  It receives data
 from DocumentCloud via the request dispatch and writes data back to
 DocumentCloud using the standard API
 """
-
+from listcrunch import uncrunch
 from documentcloud.addon import AddOn
 
-
-class HelloWorld(AddOn):
-    """An example Add-On for DocumentCloud."""
-
+class RedactInch(AddOn):
     def main(self):
-        """The main add-on functionality goes here."""
-        # fetch your add-on specific data
-        name = self.data.get("name", "world")
 
-        self.set_message("Hello World start!")
+        if not self.documents:
+            self.set_message("Please select at least one document")
 
-        # add a hello note to the first page of each selected document
-        if self.documents:
-            for document in self.client.documents.list(id__in=self.documents):
-                document.annotations.create(f"Hello {name}!", 0)
-        elif self.query:
-            documents = self.client.documents.search(self.query)[:3]
-            for document in documents:
-                document.annotations.create(f"Hello {name}!", 0)
+        self.set_message("Redact Bottom Inch start!")
 
-        with open("hello.txt", "w+") as file_:
-            file_.write("Hello world!")
-            self.upload_file(file_)
+        for document in self.client.documents.list(id__in=self.documents):
+            #go through each page
+            pages = document.page_count
 
-        self.set_message("Hello World end!")
-        self.send_mail("Hello World!", "We finished!")
+            #to hold the redacttion json dictionary for each individual page in this document
+            eachPage = []
 
+            for page in range(pages):
+                #append the specific json dict for this page to global dict
+                eachPage.append({"page_number": page, "x1": 0, "y1": 0.9, "x2": 1, "y2": 1})
 
+            #make the api call for this document
+            self.client.post(f"documents/{document.id}/redactions/", json=eachPage)
+
+        self.set_message("Redact Bottom Inch end!")
 if __name__ == "__main__":
-    HelloWorld().main()
+    RedactInch().main()
