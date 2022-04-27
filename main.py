@@ -11,7 +11,6 @@ from documentcloud.addon import AddOn
 
 class RedactInch(AddOn):
     def main(self):
-
         if not self.documents:
             self.set_message("Please select at least one document")
 
