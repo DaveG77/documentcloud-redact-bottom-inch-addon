@@ -1,7 +1,7 @@
 
 # Redact Bottom Inch
 
-This repository contains the Redact Bottom Inch add-on for DocumentCloud. 
+This repository contains the "Redact Bottom Inch" add-on for DocumentCloud. The add-on will redact the bottom inch of every selected user document
 
 ## Files
 
