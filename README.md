@@ -3,14 +3,14 @@
 
 This repository contains the "Redact Bottom Inch" add-on for DocumentCloud. The add-on will redact the bottom inch of every selected user document
 
-## Files
-
 ### testing
 
 Example invocation:
 ```
 python3 main.py --documents 123 --username "..." --password "..."
 ```
+
+## Files
 
 ### main.py
 
