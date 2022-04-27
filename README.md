@@ -5,16 +5,7 @@ This repository contains the Redact Bottom Inch add-on for DocumentCloud.
 
 ## Files
 
-### main.py
-
-This file is part of the `python-documentcloud` library.
-
-This file contains a base class `AddOn`, which implements shared functionality
-for all DocumentCloud Add-Ons to use.  In most cases, you should not need to
-edit this file.  You will subclass this class in `main.py`.
-
-Upon initializing this class, it parses the JSON passed in as an argument, and
-populates a number of member variables.
+### testing
 
 Example invocation:
 ```
