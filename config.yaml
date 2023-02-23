@@ -9,7 +9,7 @@ type: object
 documents:
   # By the currently selected documents
   - selected
-# Properties are the fields for your form
+  - query
 properties: {}
 version: 2
 
