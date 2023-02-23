@@ -7,17 +7,17 @@ from DocumentCloud via the request dispatch and writes data back to
 DocumentCloud using the standard API
 """
 from listcrunch import uncrunch
-from documentcloud.addon import AddOn
+from documentcloud.addon import AddOn, SoftTimeOutAddOn
 
 
-class RedactInch(AddOn):
+class RedactInch(SoftTimeOutAddOn):
     def main(self):
         if not self.documents:
             self.set_message("Please select at least one document")
 
         self.set_message("Redact Bottom Inch start!")
 
-        for document in self.client.documents.list(id__in=self.documents):
+        for document in self.get_documents():
             # go through each page
             pages = document.page_count
 
